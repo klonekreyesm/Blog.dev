@@ -1,6 +1,10 @@
+
 <?php
 
-/*
+
+
+
+/*\\
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
 |--------------------------------------------------------------------------
@@ -79,3 +83,10 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+App::missing(function($exception)
+{	
+	Log::info('User encountered a 404 page not found error');
+    return Response::view('errors.missing', array(), 404);
+});

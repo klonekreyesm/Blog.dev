@@ -11,17 +11,24 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 
-Route::get('/resume', function()
-{
-    return "This is my resume!";
-});
 
 Route::get('/portfolio', function()
 {
-    return "This is my portfolio!";
+	return "This is my Portfolio";
 });
+
+// Route::get('/rolldice/{guess}', function($guess){
+
+// 	$randVar = rand(1,6);
+// 	return View::make('roll-dice')->with('randVar', $randVar)->with('guess', $guess);
+// });
+
+Route::get('/about', 'ResumeController@showResume');
+
+Route::get('/portfolio', 'PortfolioController@showPortfolio');
+
+
+Route::resource('/posts', 'PostsController');
+
+
